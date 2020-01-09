@@ -1,0 +1,34 @@
+{
+  "name": "stentor-example-apl",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Example of adding Alexa Presentation Language support to your omni-channel assistant",
+  "engines": {
+    "node": "10.x"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "2.1.0",
+    "@xapp/config": "0.2.3",
+    "bespoken-tools": "2.3.14",
+    "ts-node": "8.4.1",
+    "tslib": "1.10.0",
+    "rollup": "1.29.0",
+    "typescript": "3.7.4"
+  },
+  "dependencies": {
+    "@xapp/stentor": "^1.15.0",
+    "@xapp/stentor-alexa": "^1.15.0",
+    "@xapp/stentor-dialogflow": "^1.15.0",
+    "@xapp/stentor-service-handler": "^1.15.0",
+    "@xapp/stentor-service-user-storage": "^1.15.0",
+    "aws-sdk": "2.488.0",
+    "dotenv": "8.0.0"
+  },
+  "scripts": {
+    "prebuild": "tsc -noEmit true -p . ",
+    "build": "rollup -c",
+    "start": "OVAI_LOG_LEVEL=info rollup -c --watch & node ./node_modules/bespoken-tools/bin/bst-proxy.js lambda ./dist/index.js & wait",
+    "clean": "rm -rf ./lib/*"
+  },
+  "gitHead": "bb8fead16cbd0cff42ea73d73f0da9a5401c4c99"
+}
